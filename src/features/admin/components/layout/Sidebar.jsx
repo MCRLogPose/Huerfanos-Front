@@ -1,41 +1,45 @@
-import { HelpCircle, Home, Settings, User } from "lucide-react";
-import { Link } from "react-router-dom";
+ import { Barcode, HelpCircle, Home, LogOut, PackageOpen, ShoppingCart } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
-// src/componets/layout/Sidebar.jsx
+const navLinks = [
+    { name: "Inicio", path: "/admin/home", icon: Home },
+    { name: "Stock", path: "/admin/stock", icon: Barcode },
+    { name: "Inventario", path: "/admin/inventory", icon: PackageOpen },
+    { name: "Pedidos", path: "/admin/orders", icon: ShoppingCart },
+    { name: "Reclamos", path: "/admin/claims", icon: HelpCircle },
+    { name: "Salir", path: "/user/home", icon: LogOut },
+];
+
 const Sidebar = () => {
     return (
         <aside className="w-64 bg-gray-800 text-white min-h-screen p-5">
-            <h2 className="text-2xl font-bold mb-6">Mi Sidebar</h2>
+            <h2 className="text-2xl font-bold mb-6">Huerfanos</h2>
             <nav>
-                <ul>
-                    <li className="mb-4">
-                        <Link href="#" className="hover:underline">
-                            <Home className="inline-block mr-2" />
-                            <span>Inicio</span>
-                        </Link>
-                    </li>
-                    <li className="mb-4">
-                        <Link href="#" className="hover:underline">
-                            <User className="inline-block mr-2" />
-                            <span>Perfil</span>
-                        </Link>
-                    </li>
-                    <li className="mb-4">
-                        <Link href="#" className="hover:underline">
-                            <Settings className="inline-block mr-2" />
-                            <span>Configuración</span>
-                        </Link>
-                    </li>
-                    <li className="mb-4">
-                        <Link href="#" className="hover:underline">
-                            <HelpCircle className="inline-block mr-2" />
-                            <span>Ayuda</span>
-                        </Link>
-                    </li>
+                <ul className="space-y-2">
+                    {navLinks.map((link) => {
+                        const Icon = link.icon;
+                        return (
+                            <li key={link.name}>
+                                <NavLink
+                                    to={link.path}
+                                    className={({ isActive }) =>
+                                        `flex items-center gap-4 transition-colors ${
+                                            isActive
+                                                ? "bg-orange-500 font-semibold py-2 px-4 rounded-md"
+                                                : "hover:text-orange-500 py-2 px-4"
+                                        }`
+                                    }
+                                >
+                                    <Icon className="w-5 h-5" />
+                                    {link.name}
+                                </NavLink>
+                            </li>
+                        );
+                    })}
                 </ul>
             </nav>
         </aside>
-    )
-}
+    );
+};
 
 export default Sidebar;

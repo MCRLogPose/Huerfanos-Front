@@ -2,26 +2,38 @@
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from '@/features/user/pages/LoginPage.jsx';
-import HomePage from '@/features/user/pages/HomePage.jsx';
-import StorePage from '@/features/user/pages/StorePage.jsx';
-import AboutUsPage from '@/features/user/pages/AboutUsPage.jsx';
-import RegisterPage from '@/features/user/pages/RegisterPage.jsx';
-import ProfilePage from '@/features/user/pages/ProfilePage.jsx';
-import ClaimsPage from '@/features/user/pages/ClaimsPage.jsx';
-import SupportPage from '@/features/user/pages/SupportPage.jsx';
+import UserHomePage from '@/features/user/pages/HomePage.jsx';
+import UserStorePage from '@/features/user/pages/StorePage.jsx';
+import UserAboutUsPage from '@/features/user/pages/AboutUsPage.jsx';
+import UserRegisterPage from '@/features/user/pages/RegisterPage.jsx';
+import UserProfilePage from '@/features/user/pages/ProfilePage.jsx';
+import UserClaimsPage from '@/features/user/pages/ClaimsPage.jsx';
+import UserSupportPage from '@/features/user/pages/SupportPage.jsx';
+
+import AdminHomePage from '@/features/admin/pages/AdminHomePage.jsx';
+import AdminInventoryPage from '@/features/admin/pages/AdminInventoryPage.jsx';
+import AdminOrdersPage from '@/features/admin/pages/AdminOrdersPage.jsx';
+import AdminStockPage from '@/features/admin/pages/AdminStockPage.jsx';
+import AdminClaimsPage from '@/features/admin/pages/AdminClaimsPage.jsx';
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/user/home" element={<HomePage />} />
-            <Route path="/user/store" element={<StorePage />} />
-            <Route path="/user/about-us" element={<AboutUsPage />} />
-            <Route path="/user/register" element={<RegisterPage />} />
-            <Route path="/user/profile" element={<ProfilePage />} />
-            <Route path="/user/claims" element={<ClaimsPage />} />
-            <Route path="/support" element={<SupportPage />} />
+            <Route path="/user/home" element={<UserHomePage />} />
+            <Route path="/user/store" element={<UserStorePage />} />
+            <Route path="/user/about-us" element={<UserAboutUsPage />} />
+            <Route path="/user/register" element={<UserRegisterPage />} />
+            <Route path="/user/profile" element={<UserProfilePage />} />
+            <Route path="/user/claims" element={<UserClaimsPage />} />
+            <Route path="/support" element={<UserSupportPage />} />
+
+            <Route path="/admin/home" element={<AdminHomePage />} />
+            <Route path="/admin/inventory" element={<AdminInventoryPage />} />
+            <Route path="/admin/orders" element={<AdminOrdersPage />} />
+            <Route path="/admin/stock" element={<AdminStockPage />} />
+            <Route path="/admin/claims" element={<AdminClaimsPage />} />
         </Routes>
     );
 };
