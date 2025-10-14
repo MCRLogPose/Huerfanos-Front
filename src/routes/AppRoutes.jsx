@@ -19,7 +19,7 @@ import AdminClaimsPage from '@/features/admin/pages/principal/AdminClaimsPage.js
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Navigate to="/login" replace />} />
+            <Route path="/" element={<Navigate to="/user/home" replace />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/user/home" element={<UserHomePage />} />
             <Route path="/user/store" element={<UserStorePage />} />
