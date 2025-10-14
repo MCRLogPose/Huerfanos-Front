@@ -10,11 +10,11 @@ import UserProfilePage from '@/features/user/pages/ProfilePage.jsx';
 import UserClaimsPage from '@/features/user/pages/ClaimsPage.jsx';
 import UserSupportPage from '@/features/user/pages/SupportPage.jsx';
 
-import AdminHomePage from '@/features/admin/pages/AdminHomePage.jsx';
-import AdminInventoryPage from '@/features/admin/pages/AdminInventoryPage.jsx';
-import AdminOrdersPage from '@/features/admin/pages/AdminOrdersPage.jsx';
-import AdminStockPage from '@/features/admin/pages/AdminStockPage.jsx';
-import AdminClaimsPage from '@/features/admin/pages/AdminClaimsPage.jsx';
+import AdminHomePage from '@/features/admin/pages/principal/AdminHomePage.jsx';
+import AdminInventoryPage from '@/features/admin/pages/principal/AdminInventoryPage.jsx';
+import AdminOrdersPage from '@/features/admin/pages/principal/AdminOrdersPage.jsx';
+import AdminStockPage from '@/features/admin/pages/principal/AdminStockPage.jsx';
+import AdminClaimsPage from '@/features/admin/pages/principal/AdminClaimsPage.jsx';
 
 const AppRoutes = () => {
     return (

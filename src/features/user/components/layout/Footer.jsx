@@ -46,18 +46,18 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Enlaces Rápidos</h3>
           <ul className="space-y-2 text-sm">
             {FastLinks.map((link) => (
-            <li key={link.name}>
-              <NavLink
-                to={link.path}
-                className={({ isActive }) =>
-                  `transition-colors ${isActive ? "text-orange-600 font-semibold" : "hover:text-orange-500"
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            </li>
-          ))}
+              <li key={link.name}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `transition-colors ${isActive ? "text-orange-600 font-semibold" : "hover:text-orange-500"
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -66,18 +66,18 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Ayuda</h3>
           <ul className="space-y-2 text-sm">
             {HelpLinks.map((link) => (
-            <li key={link.name}>
-              <NavLink
-                to={link.path}
-                className={({ isActive }) =>
-                  `transition-colors ${isActive ? "text-orange-600 font-semibold" : "hover:text-orange-500"
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            </li>
-          ))}
+              <li key={link.name}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `transition-colors ${isActive ? "text-orange-600 font-semibold" : "hover:text-orange-500"
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -85,6 +85,12 @@ const Footer = () => {
         <div className="text-center md:text-left">
           <h3 className="text-lg font-bold mb-3 text-orange-600">Envíanos un email</h3>
           <form className="flex flex-col space-y-3">
+            <div>
+              <label className="block font-semibold">Código</label>
+              <input
+                placeholder="Correo: example@gmail.com"
+                className="w-full rounded-md p-2 text-gray-900 text-orange-600 resize-none border border-2 border-orange-600" />
+            </div>
             <textarea
               placeholder="Escribe tu mensaje..."
               className="w-full h-20 rounded-md p-2 text-gray-900 text-orange-600 resize-none border border-2 border-orange-600"
