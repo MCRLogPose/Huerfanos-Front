@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
+import HuerfanosLogoUrl from "@/assets/Huerfanos.jpg";
 
 const Footer = () => {
 
@@ -20,7 +21,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo y descripción */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <img src="/vite.svg" alt="Logo Huérfanos" className="w-24 mb-4" />
+          <img src={HuerfanosLogoUrl} alt="Logo Huérfanos" className="w-24 mb-4 rounded-full" />
           <p className="text-sm leading-relaxed">
             Plataforma segura e intuitiva. <br />
             Revisa y explora nuestra web

@@ -1,7 +1,7 @@
-import logo from "/vite.svg"; // Usa tu logo real aquí
 import { CircleArrowRight, CircleUser, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import HuerfanosLogoUrl from "@/assets/Huerfanos.jpg";
 
 const navLinks = [
   { name: "Inicio", path: "/user/home" },
@@ -20,9 +20,9 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img
-            src={logo}
+            src={HuerfanosLogoUrl}
             alt="Logo"
-            className="h-8 w-auto sm:h-10 object-contain"
+            className="h-16 w-auto sm:h-16 object-contain rounded-full"
           />
         </Link>
 
