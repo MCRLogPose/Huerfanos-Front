@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CloudCheck, Eraser, Search, Upload } from "lucide-react";
-import { getAllCategories } from "@/features/admin/api/service/categoryService";
-import { productService } from "@/features/admin/api/service/productService";
+import { getAllCategories } from "@/features/shared/api/service/categoryService";
+import { productService } from "@/features/shared/api/service/productService";
 import Swal from "sweetalert2";
 import { GrClear } from "react-icons/gr";
 
@@ -283,7 +283,7 @@ const EditProduct = () => {
                             e.preventDefault();
                             clearFormData();
                         }}
-                        className="flex items-center justify-center gap-4 rounded-xl bg-orange-500 hover:bg-orange-600 py-3 px-6 text-white font-bold"
+                        className="flex items-center justify-center gap-4 rounded-xl bg-gray-800 hover:bg-orange-600 py-3 px-6 text-white font-bold"
                     >
                         <span>Limpiar</span>
                         <Eraser />

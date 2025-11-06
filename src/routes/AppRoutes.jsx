@@ -11,6 +11,7 @@ import UserAboutUsPage from "@/features/user/pages/AboutUsPage.jsx";
 import UserProfilePage from "@/features/user/pages/ProfilePage.jsx";
 import UserClaimsPage from "@/features/user/pages/ClaimsPage.jsx";
 import UserSupportPage from "@/features/user/pages/SupportPage.jsx";
+import ShoppingcardPage from "@/features/user/pages/CartPage.jsx";
 
 import AdminHomePage from "@/features/admin/pages/principal/AdminHomePage.jsx";
 import AdminInventoryPage from "@/features/admin/pages/principal/AdminInventoryPage.jsx";
@@ -26,6 +27,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/user/home" element={<UserHomePage />} />
       <Route path="/user/store" element={<UserStorePage />} />
+      <Route path="/user/shopping-cart" element={<ShoppingcardPage />} />
       <Route path="/user/about-us" element={<UserAboutUsPage />} />
       <Route path="/user/register" element={<RegisterPage />} />
       <Route path="/support" element={<UserSupportPage />} />

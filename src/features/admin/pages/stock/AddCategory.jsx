@@ -1,12 +1,19 @@
-import { CloudCheck } from "lucide-react";
+import { CloudCheck, Eraser } from "lucide-react";
 import { useState } from "react";
-import { createCategory } from "@/features/admin/api/service/categoryService";
+import { createCategory } from "@/features/shared/api/service/categoryService";
 
 const AddCategory = () => {
     const [formData, setFormData] = useState({
         name: "",
         description: "",
     });
+
+    const clearFormData = () => {
+        setFormData({
+            name: "",
+            description: "",
+        });
+    };
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -78,10 +85,25 @@ const AddCategory = () => {
                     required
                     className="w-4xl border p-2 rounded bg-gray-200" />
             </div>
-            <button className="flex items-center justify-center gap-4 rounded-xl bg-orange-500 py-4 px-4 text-white font-bold">
-                <span>Guardar</span>
-                <CloudCheck />
-            </button>
+            <section className="flex gap-10">
+                <button
+                    type="submit"
+                    className="flex items-center justify-center gap-4 rounded-xl bg-orange-500 hover:bg-orange-600 py-3 px-6 text-white font-bold"
+                >
+                    <span>Guardar</span>
+                    <CloudCheck />
+                </button>
+                <button
+                    onClick={(e) => {
+                        e.preventDefault();
+                        clearFormData();
+                    }}
+                    className="flex items-center justify-center gap-4 rounded-xl bg-gray-800 hover:bg-orange-600 py-3 px-6 text-white font-bold"
+                >
+                    <span>Limpiar</span>
+                    <Eraser />
+                </button>
+            </section>
         </form>
     );
 };
