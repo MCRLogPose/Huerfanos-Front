@@ -70,18 +70,6 @@ const Navbar = () => {
           <span>INGRESAR</span>
           <CircleArrowRight size={18} />
         </Link>
-        <Link
-          to="/user/profile"
-          className="text-white rounded-full hover:text-orange-700 transition flex items-center"
-        >
-          <CircleUser size={40} />
-        </Link>
-        <Link
-          to="/user/shopping-cart"
-          className="text-white rounded-full hover:text-orange-700 transition flex items-center"
-        >
-          <ShoppingCart size={40} />
-        </Link>
       </div>
 
       {/* Menú móvil */}
@@ -119,22 +107,6 @@ const Navbar = () => {
             >
               <span>INGRESAR</span>
               <CircleArrowRight size={20} />
-            </Link>
-            <Link
-              to="/user/profile"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-orange-500 bg-white border border-orange-500 px-4 py-2 rounded-md font-semibold hover:bg-orange-500 hover:text-white transition flex items-center justify-center gap-2"
-            >
-              <span>Perfil</span>
-              <CircleUser size={20} />
-            </Link>
-            <Link
-              to="/user/profile"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-orange-500 bg-white border border-orange-500 px-4 py-2 rounded-md font-semibold hover:bg-orange-500 hover:text-white transition flex items-center justify-center gap-2"
-            >
-              <span>Carrito</span>
-              <ShoppingCart size={20} />
             </Link>
           </div>
         </div>

@@ -3,8 +3,12 @@ import { orderRoutes } from "../routes/orderRoutes";
 
 export const orderService = {
   // Crear una nueva orden
-  create: async (userId, items) => {
-    const response = await api.post(orderRoutes.CREATE(userId), items);
+  create: async (userId, items, paymentMethod) => {
+    const payload = {
+      items,
+      paymentMethod,
+    };
+    const response = await api.post(orderRoutes.CREATE(userId), payload);
     return response.data;
   },
 

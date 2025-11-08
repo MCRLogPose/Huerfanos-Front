@@ -1,16 +1,24 @@
-// src/api/apiService.js
-import axios from 'axios';
+// src/api/service/apiService.js
+import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8082/api',
+  baseURL: "http://localhost:8082/api",
+  withCredentials: true, // 🔹 necesario si allowCredentials = true en backend
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+// 🔹 Interceptor para agregar el token automáticamente
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token"); // o sessionStorage
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 export default api;

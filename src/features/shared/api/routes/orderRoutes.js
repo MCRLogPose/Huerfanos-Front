@@ -1,15 +1,15 @@
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8082/api";
+
 export const orderRoutes = {
-  BASE: "/api/orders",
-
   // Endpoints específicos
-  GET_ALL: "/api/orders",
-  GET_BY_USER: (userId) => `/api/orders/user/${userId}`,
-  GET_BY_ID: (id) => `/api/orders/${id}`,
-  CREATE: (userId) => `/api/orders?userId=${userId}`,
+  GET_ALL: `${API_BASE}/orders`,
+  GET_BY_USER: (userId) => `${API_BASE}/orders/user/${userId}`,
+  GET_BY_ID: (id) => `${API_BASE}/orders/${id}`,
+  CREATE: (userId) => `${API_BASE}/orders/create?userId=${userId}`,
 
-  CONFIRM_PAYMENT: (id) => `/api/orders/${id}/confirm-payment`,
-  CANCEL: (id) => `/api/orders/${id}/cancel`,
-  SHIPPER: (id) => `/api/orders/${id}/shipper`,
-  DELIVERED: (id) => `/api/orders/${id}/delivered`,
-  COMPLETED: (id) => `/api/orders/${id}/completed`,
+  CONFIRM_PAYMENT: (id) => `${API_BASE}/orders/${id}/confirm-payment`,
+  CANCEL: (id) => `${API_BASE}/orders/${id}/cancel`,
+  SHIPPER: (id) => `${API_BASE}/orders/${id}/shipper`,
+  DELIVERED: (id) => `${API_BASE}/orders/${id}/delivered`,
+  COMPLETED: (id) => `${API_BASE}/orders/${id}/completed`,
 };

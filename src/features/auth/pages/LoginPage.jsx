@@ -33,18 +33,35 @@ const LoginPage = () => {
       setLoading(false);
       return;
     }
+
     try {
-      //Llamamos al servicio de login (envía JSON plano)
+      // 🔹 1. Limpiar sesión previa (tokens, datos de usuario, carrito, etc.)
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("cart");
+      localStorage.removeItem("role");
+
+      // 🔹 2. Llamar al servicio de login (envía JSON plano)
       const response = await login(formData);
 
-      //Guardamos el token
+      // 🔹 3. Guardar nuevo token
       localStorage.setItem("token", response.token);
 
-      // Decodificamos token
+      // 🔹 4. Decodificar token y guardar info útil
       const decoded = jwtDecode(response.token);
       const role = decoded.roles?.[0] || "USER";
-      console.log("Rol del usuario: ", role);
-      //Redirigimos según el rol
+
+      localStorage.setItem("role", role);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: decoded.sub,
+          email: decoded.email,
+          roles: decoded.roles,
+        })
+      );
+
+      // 🔹 5. Redirigir según el rol
       if (role === "ADMIN") {
         navigate("/admin/home");
       } else if (role === "SELLER") {

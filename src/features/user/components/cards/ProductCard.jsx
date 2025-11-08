@@ -56,6 +56,7 @@ const ProductCard = ({ product, expanded, onExpand, onReaction, onAddToCart }) =
                         </div>
 
                         {/* Botón de reacción */}
+                        {/* Botón de reacción con contador */}
                         <button
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -65,9 +66,12 @@ const ProductCard = ({ product, expanded, onExpand, onReaction, onAddToCart }) =
                         >
                             <Star
                                 size={26}
-                                className={`hover:text-orange-500 ${product.isLiked ? "text-orange-500" : "text-gray-400"} cursor-pointer`}
+                                className={`hover:text-orange-500 ${product.isLiked ? "text-orange-500" : "text-gray-400"
+                                    } cursor-pointer`}
                             />
+                            <span className="text-sm text-gray-600">{product.likeCount || 0}</span>
                         </button>
+
 
                     </div>
                 </>
@@ -123,6 +127,7 @@ const ProductCard = ({ product, expanded, onExpand, onReaction, onAddToCart }) =
                                 </div>
 
                                 {/* Botón de reacción */}
+                                {/* Botón de reacción con contador */}
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
@@ -131,10 +136,13 @@ const ProductCard = ({ product, expanded, onExpand, onReaction, onAddToCart }) =
                                     className="mr-6"
                                 >
                                     <Star
-                                        size={26}
-                                        className={`hover:text-orange-500 ${product.isLiked ? "text-orange-500" : "text-gray-400"} cursor-pointer`}
+                                        size={32}
+                                        className={`hover:text-orange-500 ${product.isLiked ? "text-orange-500" : "text-gray-400"
+                                            } cursor-pointer`}
                                     />
+                                    <span className="text-sm text-gray-600">{product.likeCount || 0}</span>
                                 </button>
+
 
                             </div>
                         </div>
