@@ -1,5 +1,6 @@
 import api from "@/api/service/apiService";// tu instancia configurada de axios
 import { productRoutes } from "../routes";
+import axios from "axios";
 
 export const productService = {
   // Crear un producto
@@ -10,7 +11,7 @@ export const productService = {
 
   // Obtener todos los productos
   getAll: async () => {
-    const response = await api.get(productRoutes.GET_ALL);
+    const response = await axios.get(productRoutes.GET_ALL);
     return response.data;
   },
 

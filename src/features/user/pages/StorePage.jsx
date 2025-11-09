@@ -40,46 +40,67 @@ const StorePage = () => {
       try {
         const response = await productService.getAll();
 
-        // Agregar propiedades extra (likes y isLiked)
-        const productsWithLikes = await Promise.all(
-          response.map(async (product) => {
-            try {
-              const [count, hasLiked] = await Promise.all([
-                ratingService.countLikes(product.id),
-                ratingService.hasLiked(user.id, product.id),
-              ]);
-              return { ...product, likeCount: count, isLiked: hasLiked };
-            } catch (error) {
-              console.warn("Error al obtener likes para", product.id, error);
-              return { ...product, likeCount: 0, isLiked: false };
-            }
-          })
-        );
-
-        setProducts(productsWithLikes);
+        // Si hay usuario logueado, obtenemos los likes
+        if (user?.id) {
+          const productsWithLikes = await Promise.all(
+            response.map(async (product) => {
+              try {
+                const [count, hasLiked] = await Promise.all([
+                  ratingService.countLikes(product.id),
+                  ratingService.hasLiked(user.id, product.id),
+                ]);
+                return { ...product, likeCount: count, isLiked: hasLiked };
+              } catch (error) {
+                console.warn("Error al obtener likes para", product.id, error);
+                return { ...product, likeCount: 0, isLiked: false };
+              }
+            })
+          );
+          setProducts(productsWithLikes);
+        } else {
+          // Si no hay usuario, solo contamos likes (sin saber si ha dado like)
+          const productsWithLikes = await Promise.all(
+            response.map(async (product) => {
+              try {
+                const count = await ratingService.countLikes(product.id);
+                return { ...product, likeCount: count, isLiked: false };
+              } catch (error) {
+                console.warn("Error al obtener likes para", product.id, error);
+                return { ...product, likeCount: 0, isLiked: false };
+              }
+            })
+          );
+          setProducts(productsWithLikes);
+        }
       } catch (error) {
         console.error("Error al cargar productos:", error);
       }
     };
 
-    if (user?.id) fetchProducts();
+    // Se ejecuta siempre
+    fetchProducts();
   }, [user]);
+
 
   // Manejar el toggle de reacción
   const handleReaction = async (product) => {
+    if (!user) {
+      Swal.fire({
+        icon: "info",
+        title: "Inicia sesión",
+        text: "Debes iniciar sesión para reaccionar a productos.",
+        confirmButtonColor: "#3b82f6",
+      });
+      return;
+    }
+
     try {
       const isLiked = !product.isLiked;
       await ratingService.toggleReaction(user.id, product.id, isLiked);
-
-      // Actualizamos el estado local
       setProducts((prev) =>
         prev.map((p) =>
           p.id === product.id
-            ? {
-                ...p,
-                isLiked,
-                likeCount: p.likeCount + (isLiked ? 1 : -1),
-              }
+            ? { ...p, isLiked, likeCount: p.likeCount + (isLiked ? 1 : -1) }
             : p
         )
       );
@@ -87,6 +108,7 @@ const StorePage = () => {
       console.error("Error al reaccionar:", error);
     }
   };
+
 
   const handleExpand = (id) => {
     setExpandedProductId((prev) => (prev === id ? null : id));

@@ -4,8 +4,18 @@ import { userRoutes } from "../routes";
 export const userService = {
   // Obtener el usuario autenticado
   getCurrentUser: async () => {
-    const response = await api.get(userRoutes.GET_ME);
-    return response.data;
+    try {
+      const response = await api.get(userRoutes.GET_ME);
+      return response.data;
+    } catch (err) {
+      if (err.response?.status === 401 || err.response?.status === 403) {
+        // Controla internamente
+        console.info("No hay sesión activa (desde userService).");
+        return null;
+      }
+      // Si es otro tipo de error, propágalo
+      throw err;
+    }
   },
 
   // Obtener todos los usuarios (solo ADMIN)

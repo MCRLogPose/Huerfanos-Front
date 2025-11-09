@@ -8,6 +8,10 @@ const navLinks = [
   { name: "Tienda", path: "/user/store" },
   { name: "Nosotros", path: "/user/about-us" },
 ];
+// validar si el usuario esta logeado
+const isUserLoggedIn = () => {
+  return localStorage.getItem("token") !== null;
+}
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,13 +67,22 @@ const Navbar = () => {
           <span>REGISTRATE</span>
           <CircleArrowRight size={18} />
         </Link>
-        <Link
+        {isUserLoggedIn() ? (
+          <Link
+            to="/user/profile"
+            className="text-white px-3 lg:px-4 rounded-md font-semibold hover:bg-orange-700 transition bg-orange-600 flex items-center gap-2 whitespace-nowrap h-10 lg:h-14 border border-white text-sm lg:text-base"
+          >
+            <span>PERFIL</span>
+            <CircleUser size={18} />
+          </Link>
+        ) : <Link
           to="/login"
           className="text-white px-3 lg:px-4 rounded-md font-semibold hover:bg-orange-700 transition bg-orange-600 flex items-center gap-2 whitespace-nowrap h-10 lg:h-14 border border-white text-sm lg:text-base"
         >
           <span>INGRESAR</span>
           <CircleArrowRight size={18} />
-        </Link>
+        </Link>}
+        
       </div>
 
       {/* Menú móvil */}
