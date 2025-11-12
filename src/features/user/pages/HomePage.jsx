@@ -25,7 +25,7 @@ const HomePage = () => {
                     {/* Contenido principal */}
                     <div className="relative z-10 max-w-3xl px-6 md:px-20">
                         <h1 className="text-3xl md:text-5xl font-extrabold text-gray-300 mb-2">
-                            PANADERÍA PASTELERÍA
+                            HISTORIAS REALES DE MADRES QUE INSPIRAN
                         </h1>
                         <h2 className="text-2xl md:text-4xl font-extrabold text-orange-600 mb-6">
                             BODEGA HUÉRFANOS

@@ -5,6 +5,7 @@ export const orderRoutes = {
   GET_ALL: `${API_BASE}/orders`,
   GET_BY_USER: (userId) => `${API_BASE}/orders/user/${userId}`,
   GET_BY_ID: (id) => `${API_BASE}/orders/${id}`,
+  GET_BY_STATUS: (status) => `${API_BASE}/orders/status/${status}`,
   CREATE: (userId) => `${API_BASE}/orders/create?userId=${userId}`,
 
   CONFIRM_PAYMENT: (id) => `${API_BASE}/orders/${id}/confirm-payment`,

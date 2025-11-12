@@ -63,7 +63,8 @@ export const CartProvider = ({ children }) => {
                 quantity: item.quantity,
             }));
 
-            const response = await orderService.create(userId, items, paymentMethod);
+            await orderService.create(userId, items, paymentMethod);
+            const response = await orderService.confirmPayment(response.id);
             setOrder(response);
             
             Swal.fire({

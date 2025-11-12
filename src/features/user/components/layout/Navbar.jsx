@@ -10,6 +10,7 @@ const navLinks = [
 ];
 // validar si el usuario esta logeado
 const isUserLoggedIn = () => {
+  console.log(localStorage.getItem("token") !== null);
   return localStorage.getItem("token") !== null;
 }
 

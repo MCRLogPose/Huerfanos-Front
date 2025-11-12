@@ -30,6 +30,12 @@ export const orderService = {
     return response.data;
   },
 
+  // Obtener una orden por ID
+  getByStatus: async (status) => {
+    const response = await api.get(orderRoutes.GET_BY_STATUS(status));
+    return response.data;
+  },
+
   // Confirmar pago
   confirmPayment: async (id) => {
     const response = await api.post(orderRoutes.CONFIRM_PAYMENT(id));

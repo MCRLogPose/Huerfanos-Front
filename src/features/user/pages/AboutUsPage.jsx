@@ -15,7 +15,7 @@ const AboutUsPage = () => {
             <img
               src={ImageUrl1}
               alt="Ilustración 1"
-              className="w-40 md:w-52"
+              className="w-64 md:w-80"
             />
             <p className="text-justify max-w-xl">
               Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
@@ -33,12 +33,12 @@ const AboutUsPage = () => {
             <img
               src={ImageUrl3}
               alt="Ilustración 2"
-              className="w-40 md:w-52"
+              className="w-64 md:w-80"
             />
           </div>
         </section>
 
-        {/* Sección: Alcance */}
+        {/* Sección: Alcance */}  
         <section className="bg-gray-100 py-16 px-6 md:px-20">
           <h2 className="text-center text-2xl font-bold mb-12">Alcance</h2>
 
