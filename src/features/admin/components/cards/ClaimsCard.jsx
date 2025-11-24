@@ -1,5 +1,5 @@
 import React from "react";
-import { Barcode, FileText, Mail, QrCode, Ruler } from "lucide-react";
+import { Barcode, Calendar, FileText, Mail, QrCode, Ruler } from "lucide-react";
 import reactLogo from "@/assets/react.svg";
 
 const ClaimsCard = ({ claims, onAction }) => {
@@ -23,8 +23,8 @@ const ClaimsCard = ({ claims, onAction }) => {
                         <p className="text-gray-800 font-regular text-sm">{claims.productName}</p>
                     </div>
                     <div className="flex flex-row gap-4">
-                        <Barcode size={16} className="text-gray-600" />
-                        <p className="text-gray-800 font-regular text-sm">{claims.productCode}</p>
+                        <Calendar size={16} className="text-gray-600" />
+                        <p className="text-gray-800 font-regular text-sm">{new Date(claims.createdAt).toLocaleString()}</p>
                     </div>
                     <div className="flex flex-row gap-4">
                         <QrCode size={16} className="text-gray-600" />

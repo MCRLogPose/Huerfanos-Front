@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import OrderStatusBadge from "@/features/user/components/comom/OrderStatusBadge.jsx";
 
-const OrderCard = ({ order }) => {
+const OrderCard = ({ order, onClaim }) => {
     const navigate = useNavigate();
 
     const handleViewReceipt = () => {
@@ -67,12 +67,20 @@ const OrderCard = ({ order }) => {
                         S/ {order.total.toFixed(2)}
                     </span>
                 </p>
-                <button
-                    onClick={handleViewReceipt}
-                    className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg text-sm font-medium shadow-sm transition-all"
-                >
-                    Ver Factura
-                </button>
+                <div className="flex gap-2">
+                    <button
+                        onClick={onClaim}
+                        className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg text-sm font-medium shadow-sm transition-all"
+                    >
+                        Hacer Reclamo
+                    </button>
+                    <button
+                        onClick={handleViewReceipt}
+                        className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg text-sm font-medium shadow-sm transition-all"
+                    >
+                        Ver Factura
+                    </button>
+                </div>
             </footer>
         </article>
     );

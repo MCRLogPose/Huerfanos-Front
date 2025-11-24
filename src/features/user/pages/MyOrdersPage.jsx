@@ -5,12 +5,15 @@ import { orderService } from "@/features/shared/api/service/orderService";
 import OrderCard from "@/features/user/components/cards/OrderCard.jsx";
 import { useAuthContext } from "@/features/shared/context/AuthContext";
 import PaginationBar from "@/features/user/components/comom/PaginationBar.jsx";
+import ClaimModal from "@/features/user/components/modal/ClaimModal.jsx";
 
 const MyOrdersPage = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user } = useAuthContext();
     const [currentPage, setCurrentPage] = useState(1);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+    const [showClaimModal, setShowClaimModal] = useState(false);
 
     useEffect(() => {
         const fetchOrders = async () => {
@@ -44,6 +47,12 @@ const MyOrdersPage = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const paginatedItems = orders.slice(startIndex, endIndex);
+
+    const handleClaim = (order) => {
+        setSelectedOrder(order);
+        setShowClaimModal(true);
+    };
+
     return (
         <BasePage>
             <main className="max-w-4xl mx-auto py-8 px-4">
@@ -56,7 +65,7 @@ const MyOrdersPage = () => {
                         No tienes pedidos registrados aún.
                     </div>
                 ) : (
-                    paginatedItems.map((order) => <OrderCard key={order.id} order={order} />)
+                    paginatedItems.map((order) => <OrderCard key={order.id} order={order} onClaim={() => handleClaim(order)} />)
                 )}
                 {/* Barra de paginación */}
                 <PaginationBar
@@ -64,6 +73,14 @@ const MyOrdersPage = () => {
                     totalPages={totalPages}
                     onPageChange={setCurrentPage}
                 />
+
+                {showClaimModal && (
+                    <ClaimModal
+                        order={selectedOrder}
+                        onClose={() => setShowClaimModal(false)}
+                    />
+                )}
+
             </main>
         </BasePage>
     );
