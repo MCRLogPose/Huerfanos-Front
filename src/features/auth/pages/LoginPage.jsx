@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { login } from "@/features/auth/api/service/authService.js";
 import { jwtDecode } from "jwt-decode";
 import Swal from "sweetalert2";
+import { useAuthContext } from "@/features/shared/context/AuthContext";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const LoginPage = () => {
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { refetch } = useAuthContext();
 
   const handleChange = (e) => {
     setFormData({
@@ -61,7 +63,10 @@ const LoginPage = () => {
         })
       );
 
-      // 🔹 5. Redirigir según el rol
+      // 🔹 5. Actualizar estado global de autenticación
+      await refetch();
+
+      // 🔹 6. Redirigir según el rol
       if (role === "ADMIN") {
         navigate("/admin/home");
       } else if (role === "SELLER") {
@@ -174,3 +179,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+

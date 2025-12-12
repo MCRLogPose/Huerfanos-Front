@@ -6,7 +6,7 @@ const navLinks = [
     { name: "Stock", path: "/admin/stock", icon: Barcode },
     { name: "Inventario", path: "/admin/inventory", icon: PackageOpen },
     { name: "Pedidos", path: "/admin/orders", icon: ShoppingCart },
-    { name: "Reclamos", path: "/admin/claims", icon: HelpCircle },
+    //{ name: "Reclamos", path: "/admin/claims", icon: HelpCircle },
 ];
 
 const logOutAdmin = () => {

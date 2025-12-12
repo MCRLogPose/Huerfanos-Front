@@ -36,10 +36,10 @@ export const CartProvider = ({ children }) => {
         setCart((prevCart) =>
             existing
                 ? prevCart.map((item) =>
-                      item.id === product.id
-                          ? { ...item, quantity: newQuantity }
-                          : item
-                  )
+                    item.id === product.id
+                        ? { ...item, quantity: newQuantity }
+                        : item
+                )
                 : [...prevCart, { ...product, quantity }]
         );
 
@@ -63,10 +63,10 @@ export const CartProvider = ({ children }) => {
                 quantity: item.quantity,
             }));
 
-            await orderService.create(userId, items, paymentMethod);
-            const response = await orderService.confirmPayment(response.id);
+            const createdOrder = await orderService.create(userId, items, paymentMethod);
+            const response = await orderService.confirmPayment(createdOrder.id);
             setOrder(response);
-            
+
             Swal.fire({
                 icon: "success",
                 title: "Orden creada",
